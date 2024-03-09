@@ -1,6 +1,11 @@
 const asyncHandler = require("express-async-handler");
 const axios = require("axios");
 
+let mqttHandler = require("../mqtt/mqtt_handler");
+
+let mqttClient = new mqttHandler();
+mqttClient.connect();
+
 // @desc   send gas sensor data input to flask ML backend and get back ML output/predictions as response
 // @route   POST /api/fruit-quality
 // @access   Public
@@ -35,6 +40,7 @@ const postIdealCropData = asyncHandler(async (req, res) => {
     if(temperature && humidity)
     {
         console.log(temperature, humidity);
+        mqttClient.sendMessage("Temperature: " + String(req.body.temperature) + "\n Humidity: " + String(req.body.humidity));
         res.status(200).send("Data Received!");
     }
     else
