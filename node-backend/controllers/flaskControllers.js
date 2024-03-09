@@ -34,6 +34,7 @@ const postIdealCropData = asyncHandler(async (req, res) => {
     const humidity = req.body.humidity;
     if(temperature && humidity)
     {
+        console.log(temperature, humidity);
         res.status(200).send("Data Received!");
     }
     else
