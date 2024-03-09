@@ -26,8 +26,26 @@ const postPlantDiseasesAndFertilizersData = asyncHandler(async (req, res) => {
     //const res = axios POST request to flask backend
 });
 
+// @desc   send dht sensor data input to flask ML backend and get back ML output/predictions as response
+// @route   POST /api/plant-disease
+// @access   Public
+const postIdealCropData = asyncHandler(async (req, res) => {
+    const temperature = req.body.temperature;
+    const humidity = req.body.humidity;
+    if(temperature && humidity)
+    {
+        res.status(200).send("Data Received!");
+    }
+    else
+    {
+        throw new Error("Please provide all fields!");
+    }
+    //const res = axios POST request to flask backend
+});
+
 module.exports = {
     postFruitQualityData,
     postLocustData,
-    postPlantDiseasesAndFertilizersData
+    postPlantDiseasesAndFertilizersData,
+    postIdealCropData
 }

@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-function App() {
-  const [count, setCount] = useState(0)
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  Link,
+} from "react-router-dom";
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+// import Layout from "./Components/Layout";
+// import Home from "./Pages/Home";
+// import HostLayout from "./Components/HostLayout";
+// import CheckNews from "./Pages/CheckNews";
+// import Login from "./Pages/Login";
+// import NotFound from "./Pages/NotFound";
+// import NewsDetails from "./Pages/NewsDetails";
+// import LiveNews from "./Pages/LiveNews";
+// import SearchPg from "./Pages/SearchPg";
+// import Private from "./Components/Private";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route element={<Private />}>
+        <Route path="host" element={<HostLayout />} />
+      </Route>
+      <Route path="livenews" element={<LiveNews />} />
+      <Route path="checknews" element={<CheckNews />} />
+      <Route path="search" element={<SearchPg />} />
+      <Route path="login" element={<Login />} />
+      <Route path=":id" element={<NewsDetails />} />
+      <Route path="*" element={<NotFound />} />
+    </Route>
   )
-}
+);
 
-export default App
+export default function App() {
+  return <RouterProvider router={router} />;
+}
