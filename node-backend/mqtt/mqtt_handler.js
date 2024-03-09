@@ -13,8 +13,11 @@ class MqttHandler
 
     connect()
     {
+        const options = {
+            protocol: 'mqtt', // Specify the protocol here
+        };
         // Connect to mqtt with credentials (in case if needed, otherwise we can omit 2nd param)
-        this.mqttClient = mqtt.connect(this.host/*, { username: this.username, password: this.password }*/);
+        this.mqttClient = mqtt.connect(this.host/*, { username: this.username, password: this.password }*/, options);
 
         // Mqtt error calback
         this.mqttClient.on("error", (err) => {
