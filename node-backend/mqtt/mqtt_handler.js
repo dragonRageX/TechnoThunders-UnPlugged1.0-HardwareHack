@@ -39,7 +39,7 @@ class MqttHandler
         //close connection - client.end() in mqtt.js file
         this.mqttClient.on("close", () => {
             console.log("MQTT Client Disconnected!");
-        })
+        });
     }
 
     // Sends a mqtt message to topic: mytopic

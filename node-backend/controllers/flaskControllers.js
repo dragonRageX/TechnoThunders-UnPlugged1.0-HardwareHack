@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const axios = require("axios");
 
-let mqttHandler = require("./mqtt_handler");
+let mqttHandler = require("../mqtt/mqtt_handler");
 
 let mqttClient = new mqttHandler();
 mqttClient.connect();
@@ -13,6 +13,7 @@ const postFruitQualityData = asyncHandler(async (req, res) => {
     const mqSensorData = req.body.mqSensorData;
     //const res = axios POST request to flask backend
 });
+
 
 // @desc   send image data input to flask ML backend and get back ML output/predictions as response
 // @route   POST /api/locust
@@ -30,6 +31,7 @@ const postPlantDiseasesAndFertilizersData = asyncHandler(async (req, res) => {
     const imageData = req.body.imageData;
     //const res = axios POST request to flask backend
 });
+
 
 // @desc   send dht sensor data input to flask ML backend and get back ML output/predictions as response
 // @route   POST /api/plant-disease
