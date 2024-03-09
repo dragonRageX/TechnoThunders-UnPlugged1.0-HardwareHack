@@ -3,8 +3,8 @@ const axios = require("axios");
 
 let mqttHandler = require("../mqtt/mqtt_handler");
 
-let mqttClient = new mqttHandler();
-mqttClient.connect();
+// let mqttClient = new mqttHandler();
+// mqttClient.connect();
 
 // @desc   send gas sensor data input to flask ML backend and get back ML output/predictions as response
 // @route   POST /api/fruit-quality
