@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const axios = require("axios");
 
-let mqttHandler = require("../mqtt/mqtt_handler");
+let mqttHandler = require("./mqtt_handler");
 
 let mqttClient = new mqttHandler();
 mqttClient.connect();
