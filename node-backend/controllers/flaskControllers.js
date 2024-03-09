@@ -42,7 +42,7 @@ const postIdealCropData = asyncHandler(async (req, res) => {
     if(temperature && humidity)
     {
         console.log(temperature, humidity);
-        mqttClient.sendMessage("Temperature: " + String(req.body.temperature) + "\n Humidity: " + String(req.body.humidity));
+        mqttClient.sendMessage(req.body.temperature);
         res.status(200).send("Data Received!");
     }
     else
