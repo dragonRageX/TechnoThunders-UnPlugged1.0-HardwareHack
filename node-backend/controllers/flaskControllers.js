@@ -15,7 +15,7 @@ const postFruitQualityData = asyncHandler(async (req, res) => {
     //const res = axios POST request to flask backend
     const imageData = new CameraData(req.body)
     await imageData.save()
-    console.log('success')
+    console.log(imageData)
 });
 
 
