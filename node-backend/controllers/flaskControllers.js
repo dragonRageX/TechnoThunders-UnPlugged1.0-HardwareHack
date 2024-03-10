@@ -13,9 +13,19 @@ const CameraData = require('../models/camera')
 const postFruitQualityData = asyncHandler(async (req, res) => {
     const mqSensorData = req.body.mqSensorData;
     //const res = axios POST request to flask backend
-    const camData = new CameraData(req.body)
-    await camData.save()
+    const imageData = req.body;
+    const tp = Date.now();
+    const filename = `image_${tp}.jpg`;
 
+    fs.writeFile(filename, imageData, (err) => {
+        if (err) {
+            console.error('Error saving image:', err);
+            res.status(500).send('Error saving image');
+        } else {
+            console.log('Image saved:', filename);
+            res.status(200).send('Image saved successfully');
+        }
+    });
 });
 
 
