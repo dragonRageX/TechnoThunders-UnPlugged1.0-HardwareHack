@@ -17,7 +17,9 @@ const flaskLocustPredictionRouter = require("./routes/locustPredictionRoutes");
 const flaskPlantDiseasesAndFertilisersRouter = require("./routes/plantDiseasesAndFertilisersRoutes");
 const flaskIdealCropRouter = require("./routes/idealCropRoutes");
 const { errorHandler } = require("./middleware/errorMiddleware");
-require('./config/mongo')
+const connectDB = require('./config/mongo')
+
+connectDB();
 
 app.use(cors());
 app.use(express.json());
