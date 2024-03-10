@@ -1,10 +1,11 @@
-// require('dotenv').config();
+require('dotenv').config();
 const mongoose = require('mongoose');
 
 
 const connectDB = async () => {
     try {
-        const conn = await mongoose.connect(process.env.URL);
+        url = "mongodb+srv://Seon:Seonunicode@cluster0.ib1y5gn.mongodb.net/Reddit?retryWrites=true&w=majority"
+        const conn = await mongoose.connect(url);
         console.log(`MongoDB Connected:${conn.connection.host}`);
     } catch (error) {
         console.log(error);
