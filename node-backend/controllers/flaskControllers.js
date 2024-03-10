@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const axios = require("axios");
 const SensorData = require('../models/Sensor')
 let mqttHandler = require("../mqtt/mqtt_handler");
+const CameraData = require('../models/camera')
 
 // let mqttClient = new mqttHandler();
 // mqttClient.connect();
@@ -12,6 +13,9 @@ let mqttHandler = require("../mqtt/mqtt_handler");
 const postFruitQualityData = asyncHandler(async (req, res) => {
     const mqSensorData = req.body.mqSensorData;
     //const res = axios POST request to flask backend
+    const camData = new CameraData(req.body)
+    await camData.save()
+
 });
 
 
@@ -21,6 +25,8 @@ const postFruitQualityData = asyncHandler(async (req, res) => {
 const postLocustData = asyncHandler(async (req, res) => {
     const imageData = req.body.imageData;
     //const res = axios POST request to flask backend
+
+
 });
 
 
@@ -60,7 +66,7 @@ const postIdealCropData = asyncHandler(async (req, res) => {
 
 const getCropData = asyncHandler(async (req, res) => {
     const last12Records = await SensorData.find().sort({ $natural: -1 }).limit(12);
-    res.send(last12Records)
+    res.status(200).send(last12Records)
 
 })
 
