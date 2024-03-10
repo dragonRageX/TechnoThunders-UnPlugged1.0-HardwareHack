@@ -44,7 +44,7 @@ urlp = 'https://7e42-2405-204-228-d152-4d89-2f8b-a9e6-5785.ngrok-free.app/recv'
 const postIdealCropData = asyncHandler(async (req, res) => {
     console.log(req.body);
     if (req.body) {
-        let data = new SensorData(req.body)
+        let data = await SensorData.create({ temperature: req.body.temperature, humidity: req.body.humidity })
         await data.save()
         // console.log(temperature, humidity, gas, moisture, rain);
         // mqttClient.sendMessage(req.body.temperature);
