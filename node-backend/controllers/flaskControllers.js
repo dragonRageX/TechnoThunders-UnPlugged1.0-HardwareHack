@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const axios = require("axios");
+const Data = require('../models/Sensor')
 
 let mqttHandler = require("../mqtt/mqtt_handler");
 
@@ -37,16 +38,15 @@ const postPlantDiseasesAndFertilizersData = asyncHandler(async (req, res) => {
 // @route   POST /api/plant-disease
 // @access   Public
 const postIdealCropData = asyncHandler(async (req, res) => {
-    const temperature = req.body.temperature;
-    const humidity = req.body.humidity;
-    if(temperature && humidity)
-    {
-        console.log(temperature, humidity);
+    if (req.body) {
+        // console.log(temperature, humidity, gas, moisture, rain);
         // mqttClient.sendMessage(req.body.temperature);
-        res.status(200).send("Data Received!");
+
+        let data = new Data(req.body)
+        await data.save()
+        res.send('sucess')
     }
-    else
-    {
+    else {
         throw new Error("Please provide all fields!");
     }
     //const res = axios POST request to flask backend
