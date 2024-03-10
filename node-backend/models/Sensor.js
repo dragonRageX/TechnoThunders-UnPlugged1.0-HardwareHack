@@ -1,23 +1,25 @@
 const mongoose = require('mongoose')
 
-const SensorDetails = mongoose.Schema({
-    gasData: {
-        type: String
-    },
-    Temperature: {
-        type: String
-    },
-    Humidity: {
-        type: String
-    },
-    SoilMoisture: {
-        type: String
-    },
-    Rain: {
-        type: String
-    },
-}, { timestamps: true })
+const SensorDataSchema = mongoose.Schema({
+        gasData: {
+            type: Number
+        },
+        Temperature: {
+            type: Number
+        },
+        Humidity: {
+            type: Number
+        },
+        SoilMoisture: {
+            type: Number
+        },
+        Rain: {
+            type: Number
+        },
+    }, 
+    { 
+        timestamps: true 
+    }
+);
 
-const data = mongoose.model('data', SensorDetails)
-
-module.exports = data
+module.exports = mongoose.model('SensorData', SensorDataSchema)

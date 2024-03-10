@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const axios = require("axios");
-const Data = require('../models/Sensor')
+const SensorData = require('../models/Sensor')
 
 let mqttHandler = require("../mqtt/mqtt_handler");
 
@@ -38,12 +38,13 @@ const postPlantDiseasesAndFertilizersData = asyncHandler(async (req, res) => {
 // @route   POST /api/plant-disease
 // @access   Public
 const postIdealCropData = asyncHandler(async (req, res) => {
+    console.log(req.body);
     if (req.body) {
         // console.log(temperature, humidity, gas, moisture, rain);
         // mqttClient.sendMessage(req.body.temperature);
 
-        let data = new Data(req.body)
-        await data.save()
+        // let data = new Data(req.body)
+        // await data.save()
         res.send('sucess')
     }
     else {
