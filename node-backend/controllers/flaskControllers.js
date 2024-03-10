@@ -42,9 +42,9 @@ const postIdealCropData = asyncHandler(async (req, res) => {
         // console.log(temperature, humidity, gas, moisture, rain);
         // mqttClient.sendMessage(req.body.temperature);
 
-        let data = new Data(req.body)
-        await data.save()
-        res.send('sucess')
+        // let data = new Data(req.body)
+        // await data.save()
+        res.send(req.body)
     }
     else {
         throw new Error("Please provide all fields!");
