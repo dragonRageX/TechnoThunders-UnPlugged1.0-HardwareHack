@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require("path");
 let bodyParser = require("body-parser");
 
+
 const port = process.env.PORT || 5000;
 
 const app = express();
@@ -13,6 +14,7 @@ const flaskLocustPredictionRouter = require("./routes/locustPredictionRoutes");
 const flaskPlantDiseasesAndFertilisersRouter = require("./routes/plantDiseasesAndFertilisersRoutes");
 const flaskIdealCropRouter = require("./routes/idealCropRoutes");
 const { errorHandler } = require("./middleware/errorMiddleware");
+require('./mongo')
 
 app.use(cors());
 app.use(express.json());
