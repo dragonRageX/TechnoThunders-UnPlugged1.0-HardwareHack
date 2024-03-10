@@ -13,9 +13,7 @@ const CameraData = require('../models/camera')
 const postFruitQualityData = asyncHandler(async (req, res) => {
     // const mqSensorData = req.body.mqSensorData;
     //const res = axios POST request to flask backend
-    const imageData = new CameraData(req.body)
-    await imageData.save()
-    console.log(imageData)
+    console.log(req.body)
 });
 
 
